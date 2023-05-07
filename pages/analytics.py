@@ -1,19 +1,34 @@
-import dash
-from dash import html, dcc, callback, Input, Output
-
+from imports import *
 dash.register_page(__name__)
 
-layout = html.Div(children=[
+# layout = dbc.Container([
+
+#     dbc.Row(
+#         dbc.Col(
+#              html.H1(children='This is our Analytics page'),
+#                 width=12,
+#             ), className='mt-2'
+#         ),
+    
+
+
+# 	dbc.Row(
+#         dbc.Col(
+#             [
+#                 "Select a city: ",
+#                 dcc.RadioItems(['New York City', 'Montreal','San Francisco'],
+#                     id='analytics-input')
+#             ], width=12
+#         ), className='mt-2'
+#     ),
+    
+
+# ])
+
+layout = html.Div([
     html.H1(children='This is our Analytics page'),
-	html.Div([
-        "Select a city: ",
-        dcc.RadioItems(['New York City', 'Montreal','San Francisco'],
-        'Montreal',
-        id='analytics-input')
-    ]),
-	html.Br(),
-    html.Div(id='analytics-output'),
-])
+
+], style={'background-color': 'red'})
 
 
 @callback(

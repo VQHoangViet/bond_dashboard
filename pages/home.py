@@ -11,8 +11,7 @@ news_feed = html.Iframe(src='https://www.reuters.com/news/archive/bondsNews', he
                          )
 
 # Create the app and set the layout
-layout = html.Div(
-    dbc.Container(
+layout = dbc.Container(
     [
         #news feed
         html.Div([
@@ -22,7 +21,7 @@ layout = html.Div(
     ],
     fluid=True, class_name='mt-0'
     ),
-)
+
 
 
  

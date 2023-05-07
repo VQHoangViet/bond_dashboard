@@ -6,7 +6,7 @@ dash.register_page(__name__)
 # Load the data into a pandas DataFrame
 df = pd.read_csv('./data/VietnamGovernanceBonds.csv')
 
-
+pio.templates.default = "plotly_white"
 
 
 # table 
@@ -19,75 +19,60 @@ grid = dag.AgGrid(
 )
 
 # Create the app and set the layout
-layout = html.Div(
-
-    dbc.Container(
+layout = dbc.Container(
         [
             dbc.Row(
-                [
-                    # dropdown
-                    dcc.Dropdown(id='currency-dropdown', options=[
-                        {'label': c, 'value': c} for c in df['currency_type'].unique()
-                    ], value='VND'),
-                ], className='mt-2'
+                dbc.Col(
+                    [
+                        # dropdown
+                        dcc.Dropdown(id='currency-dropdown', options=[
+                            {'label': c, 'value': c} for c in df['currency_type'].unique()
+                        ], value='VND'),
+                    ], width=12,
+                ),  className='mt-2'
             ),
 
             dbc.Row(
-                [
-                    # charts
-                    dcc.Graph(id="volume-chart"),
-                ], className='mt-2'
-            ),
-
-            dbc.Row(
-                [
+                
                     dbc.Col(
                         [
-                            dcc.Graph(id="payment-chart"),
-                        ], className='col-4'
+                        # charts
+                        dcc.Graph(id="volume-chart", className='rounded overflow-hidden'),
+                    ] , width=12,
+                ), className='mt-2'
+                
+            ),
+
+            dbc.Row(
+                [ 
+                    dbc.Col(
+                        [
+                            dcc.Graph(id="payment-chart", className='rounded overflow-hidden'),
+                        ], width=4,
                     ),
                     dbc.Col(
                         [
-                            dcc.Graph(id="rate-histogram"),
-                        ], className='col-8'
+                            dcc.Graph(id="rate-histogram", className='rounded overflow-hidden'),
+                        ], width=8, 
                     ),
                 ]
+                , className='gx-2 mt-2'
             ),
 
             dbc.Row(   
                 [
-                    # table 
-                    html.Div([grid], style={'height': '300px', 'width': '100%'}),
+                    dbc.Col(
+                        [
+                            # table 
+                            html.Div([grid], style={'height': '100%', 'width': '100%'}, className='rounded overflow-hidden'),
+                        ], width=12
+                    ) 
                 ], className='mt-2'
-
             ),
-
-
-
-
-
-            
-            # html.Div([
-            #     # dropdown
-            #     dcc.Dropdown(id='currency-dropdown', options=[
-            #         {'label': c, 'value': c} for c in df['currency_type'].unique()
-            #     ], value='VND'),
-            #     # charts
-            #     dcc.Graph(id="volume-chart"),
-            #     dcc.Graph(id="payment-chart"),
-            #     dcc.Graph(id="rate-histogram"),
-
-            # ]),
-
-
-            # table 
-            # html.Div([grid], style={'height': '300px', 'width': '100%'}, className='row'),
-
         ],
-        fluid=True, class_name='mt-0'
+        fluid=True,
     ),
 
-)
 
 
 

@@ -13,3 +13,5 @@ import utils.preprocessData as ppd
 import dash_ag_grid as dag
 import dash_bootstrap_components as dbc
 from utils.side_bar import sidebar
+
+import plotly.io as pio

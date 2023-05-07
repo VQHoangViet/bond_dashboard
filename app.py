@@ -3,12 +3,14 @@ from imports import *
 app = dash.Dash(__name__, use_pages=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
+
+
 nav_contents = []
 for page in dash.page_registry.values():
     nav_contents.append(dbc.NavItem(dbc.NavLink(page['name'], href=page["relative_path"], active=True)))
 
-
-header = dbc.Navbar(
+    
+navBar = dbc.Navbar(
     dbc.Container(
         [
               
@@ -54,17 +56,24 @@ header = dbc.Navbar(
         fluid=True,
     ),
     dark=True,
-    color="dark",
+    color="#212A3E",
     
 )
 
 
 
-app.layout = html.Div(
-    [header, dbc.Container(dash.page_container, className="mt-0",
-                            fluid=True),]
+
+app.layout = dbc.Container(
+        [   
+            # header container
+            dbc.Container(navBar, fluid=True, className='p-0'), 
+
+            # page container
+            dbc.Container(dash.page_container, fluid=True, className='p-0'),
+
+        ], style={'background-color': '#F1F6F9'}, fluid=True, className='p-0'
 )
 
-
 if __name__ == '__main__':
-	app.run_server(debug=True)
+    app.run_server(debug=True)
+	
