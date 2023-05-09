@@ -17,9 +17,9 @@ layout = dbc.Container(
         html.Div([
             # Wrap the news_feed iframe and your dashboard in a container with full screen height
             html.Div(news_feed, style={'height': '100vh',}),
-        ]),
+        ])
     ],
-    fluid=True, class_name='mt-0'
+    fluid=True, class_name='m-0 p-0'
     ),
 
 

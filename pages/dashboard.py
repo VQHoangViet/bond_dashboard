@@ -28,6 +28,16 @@ layout = dbc.Container(
                         dcc.Dropdown(id='currency-dropdown', options=[
                             {'label': c, 'value': c} for c in df['currency_type'].unique()
                         ], value='VND'),
+
+
+                         dcc.Dropdown(id='currency-dropdown', options=[
+                            {'label': c, 'value': c} for c in df['currency_type'].unique()
+                        ], value='VND'),
+
+                         dcc.Dropdown(id='currency-dropdown', options=[
+                            {'label': c, 'value': c} for c in df['currency_type'].unique()
+                        ], value='VND')
+                        
                     ], width=12,
                 ),  className='mt-2'
             ),
@@ -68,7 +78,7 @@ layout = dbc.Container(
                         ], width=12
                     ) 
                 ], className='mt-2'
-            ),
+            )
         ],
         fluid=True,
     ),

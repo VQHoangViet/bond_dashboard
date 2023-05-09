@@ -51,7 +51,7 @@ navBar = dbc.Navbar(
                 ],
                 # the row should expand to fill the available horizontal space
                 className="flex-grow-1", 
-            ),
+            )
         ],
         fluid=True,
     ),
@@ -69,11 +69,11 @@ app.layout = dbc.Container(
             dbc.Container(navBar, fluid=True, className='p-0'), 
 
             # page container
-            dbc.Container(dash.page_container, fluid=True, className='p-0'),
+            dbc.Container(dash.page_container, fluid=True, className='p-0')
 
         ], style={'background-color': '#F1F6F9'}, fluid=True, className='p-0'
 )
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
 	
